@@ -54,7 +54,8 @@ function applyOperator(e) {
             if (!display_value.includes(".")) dot.disabled = false;
             return;
         }
-        display_value = (Math.round(result * 1000) / 1000).toString();
+        display_value = result.toString();
+        if (display_value.length > 10) display_value = display_value.slice(0, 10);
         display.textContent = display_value;
     }
     let input = e.target ? e.target.textContent : e;
