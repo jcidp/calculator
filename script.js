@@ -3,6 +3,7 @@ let operator = "";
 let display_value = "";
 let display = document.querySelector(".display");
 let error = document.querySelector(".error");
+let dot = document.querySelector("#dot");
 
 document.querySelectorAll(".number").forEach(number => 
     number.addEventListener("click", fillDisplay));
@@ -12,21 +13,26 @@ document.querySelectorAll(".operator").forEach(operator =>
 document.querySelector("#backspace").addEventListener("click", backspace);
 //document.querySelector("#dot").addEventListener("click", addDecimalPoint);
 
+// Bugs to fix: Writing 0.0001
+
 function fillDisplay(e) {
     error.style.visibility = "hidden";
     console.log(e.target.textContent); //delete this
-    if (display.textContent == 0) {
-        display_value = e.target.textContent;
+    if (display.textContent === "0" && (e.target.textContent !== "." || !display_value.includes("."))) {
+        display_value = e.target.textContent === "." ? "0." : e.target.textContent;
         display.textContent = display_value;
         return;
     }
-    display_value += e.target.textContent;
+    display_value += e.target.textContent === "." ? "0." : e.target.textContent;
     display.textContent = display_value;
+    if (display_value.includes(".")) dot.disabled = true;
+    else dot.disabled = false;
 }
 
 function backspace() {
-    display_value = Math.floor(display_value / 10);
+    display_value = display_value.length == 1 ? "0" : display_value.slice(0, -1);
     display.textContent = display_value;
+    if (!display_value.includes(".")) dot.disabled = false;
 }
 
 function applyOperator(e) {
@@ -43,12 +49,16 @@ function applyOperator(e) {
     num1 = Number(display_value);
     operator = e.target.textContent === "=" ? "" : e.target.textContent;
     if (operator !== "") display_value = "";
+    if (display_value.includes(".")) dot.disabled = true;
+    else dot.disabled = false;
 }
 
 function clear() {
+    error.style.visibility = "hidden";
     display_value = "";
     display.textContent = "0";
     operator = "";
+    if (!display_value.includes(".")) dot.disabled = false;
 }
 
 function operate(num1, operator, num2) {
