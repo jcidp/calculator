@@ -1,0 +1,89 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+}
+
+header {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 48px;
+    font-family: cursive;
+    font-style: italic;
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    background-color: #4C5454;
+    border: 20px solid #4C5454;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.display {
+    width: 360px;
+    background-color: #C5E063;
+    font-size: 64px;
+    border-radius: 2px;
+    margin-bottom: 10px;
+    text-align: end;
+}
+
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    width: 360px;
+    height: 400px;
+}
+
+button {
+    font-size: 32px;
+    flex: 1 0 90px;
+    border-radius: 5px;
+    border: 2px solid #4C5454 ;
+}
+
+#zero, #clear {
+    flex: 180px;
+}
+
+.number {
+    background-color: #A0CED9; /* 8AE1FC */
+}
+
+.number:disabled {
+    background-color: #C0C0C0;
+}
+
+.operator {
+    background-color: #FFC09F;
+}
+
+#clear, #backspace {
+    background-color: #FD4731;
+    color: white;
+}
+
+/*Footer*/
+
+footer {
+    background-color: #4C5454;
+}
+
+#author {
+    text-align: center;
+    color: white;
+}

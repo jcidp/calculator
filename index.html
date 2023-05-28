@@ -9,28 +9,34 @@
     <script src="script.js" defer></script>
 </head>
 <body>
+    <header>Simple Calculator</header>
     <main>
-        <div class="display">0</div>
-        <div class="buttons">
-            <button class="number">0</button>
-            <button class="number">1</button>
-            <button class="number">2</button>
-            <button class="number">3</button>
-            <button class="number">4</button>
-            <button class="number">5</button>
-            <button class="number">6</button>
-            <button class="number">7</button>
-            <button class="number">8</button>
-            <button class="number">9</button>
-            <button class="number" id="dot">.</button>
-            <button class="operator">+</button>
-            <button class="operator">-</button>
-            <button class="operator">*</button>
-            <button class="operator">/</button>
-            <button class="operator">=</button>
-            <button id="backspace">Backspace</button>
-            <button id="clear">clear</button>
+        <div class="container">
+            <div class="display">0</div>
+            <div class="buttons">
+                <button id="clear">AC</button>
+                <button id="backspace">Del</button>
+                <button class="operator">/</button>
+                <button class="number">7</button>
+                <button class="number">8</button>
+                <button class="number">9</button>
+                <button class="operator">*</button>
+                <button class="number">4</button>
+                <button class="number">5</button>
+                <button class="number">6</button>
+                <button class="operator">-</button>
+                <button class="number">1</button>
+                <button class="number">2</button>
+                <button class="number">3</button>
+                <button class="operator">+</button>
+                <button class="number" id="zero">0</button>
+                <button class="number" id="dot">.</button>
+                <button class="operator" id="equals">=</button>
+            </div>
         </div>
     </main>
+    <footer>
+        <p id="author">Built by jcidp</p>
+    </footer>
 </body>
 </html>

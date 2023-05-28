@@ -14,7 +14,6 @@ document.querySelector("#backspace").addEventListener("click", backspace);
 document.addEventListener("keyup", keypressHandler);
 
 function keypressHandler(e) {
-    console.log(`Key: ${e.key} Code: ${e.code}`);
     if (e.key === "Backspace") backspace();
     if ("0123456789.".includes(e.key)) fillDisplay(e.key);
     if ("+-*/=".includes(e.key)) applyOperator(e.key);
@@ -22,21 +21,18 @@ function keypressHandler(e) {
     if (e.key === "Escape" || e.key === "Delete") clear();
 }
 
-function test(e) {
-    console.log(`Target: ${e.target.textContent}`)
-}
-
 function fillDisplay(e) {
+    if (display_value.length >= 10) return;
     let input = e.target ? e.target.textContent : e;
     if (input === "." && display_value.includes(".")) return;
-    console.log(input); //delete this
     if (display.textContent === "0" && (input !== "." || !display_value.includes("."))) {
         display_value = input === "." ? "0." : input;
         display.textContent = display_value;
+        if (display_value.includes(".")) dot.disabled = true;
         return;
     }
     display_value += input !== "." ? input : 
-    display_value === "" ? "0." : ".";
+        display_value === "" ? "0." : ".";
     display.textContent = display_value;
     if (display_value.includes(".")) dot.disabled = true;
     else dot.disabled = false;
