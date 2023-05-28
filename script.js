@@ -2,7 +2,6 @@ let num1;
 let operator = "";
 let display_value = "";
 let display = document.querySelector(".display");
-let error = document.querySelector(".error");
 let dot = document.querySelector("#dot");
 
 document.querySelectorAll(".number").forEach(number => 
@@ -28,7 +27,6 @@ function test(e) {
 }
 
 function fillDisplay(e) {
-    error.style.visibility = "hidden";
     let input = e.target ? e.target.textContent : e;
     if (input === "." && display_value.includes(".")) return;
     console.log(input); //delete this
@@ -54,8 +52,10 @@ function applyOperator(e) {
     if (operator) {
         let result = operate(num1, operator, Number(display_value));
         if (!isFinite(result)) {
-            error.style.visibility = "visible";
-            clear();
+            display_value = "";
+            display.textContent = "Nice try";
+            operator = "";
+            if (!display_value.includes(".")) dot.disabled = false;
             return;
         }
         display_value = (Math.round(result * 1000) / 1000).toString();
@@ -70,7 +70,6 @@ function applyOperator(e) {
 }
 
 function clear() {
-    error.style.visibility = "hidden";
     display_value = "";
     display.textContent = "0";
     operator = "";
